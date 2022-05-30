@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="Admin.css">
+    <title>Manager Page</title>
+</head>
+    <body onload="onloadControl()">
+            <div id="manager-button">
+                <h2 class="welcome">Welcome to Manager page</h2>
+                <div class="manager-button">
+                    <button onclick="approveMaintenanceRequest()">Approve maintenance Request</button>
+                    <button onclick="controlService()">Control Service</button>
+                    <button onclick="viewReport()">View Report</button>
+                </div>
+        </div>
+        <div id="approve-maintenance-request">
+            <h3>Approve maintenance Request</h3>
+        </div>
+        <div id="control-service">
+            <h3>Control Service</h3>
+        </div>
+        <div id="view-report">
+            <h3>View Report</h3>
+        </div>
+    </body>
+
+</html>
+<script>
+
+    function onloadControl(){
+        document.getElementById('manager-button').style.display="block";
+        document.getElementById('approve-maintenance-request').style.display="none";
+        document.getElementById('control-service').style.display="none";
+        document.getElementById('view-report').style.display="none";
+    }
+    function approveMaintenanceRequest(){
+        document.getElementById('manager-button').style.display="block";
+        document.getElementById('approve-maintenance-request').style.display="block";
+        document.getElementById('control-service').style.display="none";
+        document.getElementById('view-report').style.display="none";
+        
+    }
+    function controlService(){
+        document.getElementById('manager-button').style.display="block";
+        document.getElementById('approve-maintenance-request').style.display="none";
+        document.getElementById('control-service').style.display="block";
+        document.getElementById('view-report').style.display="none";
+
+    }
+    function viewReport(){
+        document.getElementById('manager-button').style.display="block";
+        document.getElementById('approve-maintenance-request').style.display="none";
+        document.getElementById('control-service').style.display="none";
+        document.getElementById('view-report').style.display="block";
+
+    }
+</script>

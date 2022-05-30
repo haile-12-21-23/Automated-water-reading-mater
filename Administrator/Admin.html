@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="Admin.css">
+<head>
+    <body onload="onloadControl()">
+            <div id="admin-button">
+                <h2 class="welcome">Welcome to Admistrator page</h2>
+                <div class="admin-button">
+                    <button onclick="createAccount()">Create Account</button>
+                    <button onclick="updateAccount()">Udate Account</button>
+                    <button onclick="blockAccount()">Block account</button>
+                </div>
+        </div>
+        <div id="create-account">
+            <h3>Create Account</h3>
+        </div>
+        <div id="update-account">
+            <h3>Update Account</h3>
+        </div>
+        <div id="block-account">
+            <h3>Block Account</h3>
+        </div>
+    </body>
+</head>
+</html>
+<script>
+
+    function onloadControl(){
+        document.getElementById('admin-button').style.display="block";
+        document.getElementById('create-account').style.display="none";
+        document.getElementById('update-account').style.display="none";
+        document.getElementById('block-account').style.display="none";
+    }
+    function createAccount(){
+        document.getElementById('create-account').style.display="block";
+        document.getElementById('update-account').style.display="none";
+        document.getElementById('block-account').style.display="none";
+
+        
+
+    }
+    function updateAccount(){
+        document.getElementById('create-account').style.display="none";
+        document.getElementById('update-account').style.display="block";
+        document.getElementById('block-account').style.display="none";
+
+    }
+    function blockAccount(){
+        document.getElementById('create-account').style.display="none";
+        document.getElementById('update-account').style.display="none";
+        document.getElementById('block-account').style.display="block";
+
+    }
+</script>

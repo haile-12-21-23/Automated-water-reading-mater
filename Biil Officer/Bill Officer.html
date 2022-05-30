@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="Admin.css">
+<head>
+    <body onload="onloadControl()">
+            <div id="officer-button">
+                <h2 class="welcome">Welcome to Bill Officer page</h2>
+                <div class="admin-button">
+                    <button onclick="calculateBill()">Calculate Bill</button>
+                    <button onclick="generateBill()">Bill Report</button>
+                    <button onclick="viewBillRport()">View Report</button>
+                </div>
+        </div>
+        <div id="calculate-bill">
+            <h3>Calculate Bill</h3>
+        </div>
+        <div id="generate-bill">
+            <h3>Generate Bill Report</h3>
+        </div>
+        <div id="view-bill-report">
+            <h3>View  Bill Report </h3>
+        </div>
+    </body>
+</head>
+</html>
+<script>
+
+    function onloadControl(){
+        document.getElementById('officer-button').style.display="block";
+        document.getElementById('calculate-bill').style.display="none";
+        document.getElementById('generate-bill').style.display="none";
+        document.getElementById('view-bill-report').style.display="none";
+    }
+    function calculateBill(){
+        document.getElementById('calculate-bill').style.display="block";
+        document.getElementById('generate-bill').style.display="none";
+        document.getElementById('view-bill-report').style.display="none";
+
+        
+
+    }
+    function generateBill(){
+        document.getElementById('calculate-bill').style.display="none";
+        document.getElementById('generate-bill').style.display="block";
+        document.getElementById('view-bill-report').style.display="none";
+
+    }
+    function viewBillRport(){
+        document.getElementById('calculate-bill').style.display="none";
+        document.getElementById('generate-bill').style.display="none";
+        document.getElementById('view-bill-report').style.display="block";
+
+    }
+</script>

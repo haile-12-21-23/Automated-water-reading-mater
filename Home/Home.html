@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<link rel="stylesheet" href="Home.css">
+	
+</head>
+
+
+<body onload="loginFirst()">
+	<!-- <script>
+		window.location.href = "./login.html";
+	</script> -->
+
+<div  class="head">
+	<ul>
+		<li><a  href="../Home/Home.html">Home       </a></li>
+		<li><a  href="../Customer/Customer.html">Custmer</a></li>
+		<li><a  href="../Administrator/Admin.html">Admistrator</a></li>
+		<li><a  href="../Biil Officer/Bill Officer.html">Bill Officer</a></li>
+		<li><a  href="../Maintenace Worker/Mantenace Worker.html">Mantenace Worker</a></li>
+		<li><a  href="../Manger/Mana09ger.html">Manager</a></li>
+    </ul>
+
+
+</div>
+
+
+<div class="info">
+	<div class="me">
+		<div class="webpage">
+<p class="s">Static web pages are difficult to alter because it requires the change to be implemented at each point manually that is the reason its content doesn’t change regularly. On the other hand, the structure of dynamic pages is different from static web pages which contain server code and allows the server to generate unique content each time the page is loaded with the same source code. </p>
+		</div>
+	</div>
+<div class="me2">
+
+		<div class="webpage">
+<p class="s">Static web page involves technology such as HTML, JavaScript, CSS, etcetera for its construction. On the contrary, dynamic web pages are created using CGI (Common Gateway Interface) and languages like AJAX, ASP, PERL, PHP, etcetera server-side scripting languages.
+The static web pages display the same content each time when someone visits it, whereas in dynamic web pages the page content changes according to the user.
+Basic HTML pages can be loaded quickly by consuming less time, that’s why the static web pages load in less time. Conversely, the dynamic web pages take more time while loading.
+A database is used in at the server end in a dynamic web page. In contrast, there is no database used in a static web page.
+ </p>
+		</div>
+	</div>
+
+	<div class="me3">
+		<div class="webpage">
+<p class="s">Static web pages are simple and written in the HTML language and stored in web server. Whenever server receives a request regarding a web page, it sends a response along with the requested web page to the client without performing any additional processing. It just locates that page on its hard disk and add HTTP headers, and reply back an HTTP response.Static Web Page processThe peculiar thing in a static web page is that the content in these types of the web page does not change depending on the request. They are always the same unless the content is changed physically on the server’s hard disk. That is the reason these web pages are known as static web pages.
+. </p>
+		</div>
+	</div>
+<div class="me4">
+		<div class="webpage">
+<p id="s" >Dynamic web pages provide a solution for the static web pages. The dynamic web page content can vary depending on the number of parameters. As it is discussed above that dissimilar to static web age, it not just simply send HTML page in response. The web server calls a program located on the hard disk which can access a database, perform transaction procedure, etcetera. If the application program produces HTML output, which is used to construct an HTTP response by the web server. The web server sends the HTTP response thus created, back to the web browser.
+
+The dynamic web pages are employed where the information changes very often such as stock prices, weather information, news and sports updates. Let’s assume a person has to physically change the Web page every 10 seconds to show the latest update of the stock prices which is impractical to physically alter the HTML pages very often, so in this case, a dynamic web page can be used.
+ </p>
+		</div>
+	</div>
+</div>
+<a id="login-first" href="./login.html"></a>
+?
+</body>
+</html>
+<script>
+	function loginFirst(){
+		alert('login')
+		
+		//window.location.replace('../Login/login.html');
+		
+		alert(90);
+	}
+	window.onload = function exampleFunction() {
+        //    alert('login page');
+		   window.location.replace('./login.html');   
+	     }
+</script>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login</title>
+	<link rel="stylesheet" type="text/css" href="Login.css">
+		<link rel="stylesheet" type="text/css" href="header.css">
+</head>
+<body>
+		<div class="head">
+</div>
+
+	<div class="Login_part">
+		<img src="../Images/user.png" class="icon">
+		<h1>LOGIN</h1>
+		<form name="login" action="authentication.php" method="post" >
+			<p>Username: </p>
+			<input type="text" name="Username" placeholder="Username" id="username">
+			<div class="usererro" id="usererrom"></div>
+			<p>Password: </p>
+			<input type="Password" name="Password" placeholder="Password" id="password"><br>
+			<div class="passerro" id="passerrom"></div>
+			<input type="button"  value="Login" id="login" >
+			<br><a href="Recovery.html">Forgot password?</a><br>
+			<a href="signup.html">Need an accout?</a>
+		</form>
+	</div>
+</body>
+
+</html>
+
+  
+<script> 
+// validation for empty field  
+		function validation()  
+		{  
+			var userName=document.login.Username.value;  
+			var password=document.login.password.value;  
+			if(userName.length=="" && password.length=="") {  
+				alert("User Name and Password fields are empty");  
+				return false;  
+			}  
+			else  
+			{  
+				if(userName.length=="") {  
+					alert("User Name is empty");  
+					return false;  
+				}   
+				if (password.length=="") {  
+				alert("Password field is empty");  
+				return false;  
+				}  
+			}                             
+		}  
+	// function validation(){
+	// 	alert('login page');
+	// 	   window.location.replace('../Customer/Customer.html');
+	// 	if(Username.isNumber()){
+	// 		window.onclick = function exampleFunction() {
+    //        alert('login page');
+	// 	   window.location.replace('../Customer/Customer.html');
+	// 	 }
+	// }
+	// else if(Username===('AD'&&'a-z'&&'4-8')){
+	// 	window.onclick = function exampleFunction() {
+    //        alert('login page');
+	// 	   window.location.replace('../Administrator/Admin.html');
+	// 	 }
+	// }
+	// else if(Username===('BO'&&'a-z'&&4-8)){
+	// 	window.onclick = function exampleFunction() {
+    //        alert('login page');
+	// 	   window.location.replace('../Bill Officer/Biil Officer.html');
+	// 	 }
+	// }
+	// else if(Username===('MW'&& 'a-z'&&'4-8')){
+	// 	window.onclick = function exampleFunction() {
+    //        alert('login page');
+	// 	   window.location.replace('../Maintenace Worker/Maintenace Worker.html');
+	// 	 }
+
+	// }
+		
+	// else if(Username===('MA'&&'a-z'&&'4-8')){
+	// 	window.onclick = function exampleFunction() {
+    //        alert('login page');
+	// 	   window.location.replace('../Manager/Manager.html');
+	// 	 }
+
+	// }
+	// }
+		
+	
+</script>

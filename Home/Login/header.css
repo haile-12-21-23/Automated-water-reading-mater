@@ -1,0 +1,39 @@
+.head{
+    position :absolute;
+    top:10px;
+    left:100px;
+    width:1500px;
+    height:50px;
+    background-color:rgb(255,255,255,0);
+    }
+    #home-link {
+        color:white;
+        font-size: 20px;
+        text-decoration: none;
+    
+    }
+    .head li{
+        display: block;
+        float: left;
+        background-color: #ffffff;
+        color: #ffffff;
+        padding-left: 100px;
+        height: 40px;
+        
+        text-align: center;
+    }
+    .head li:hover{
+        background-color: black;
+        font-size: 23px;
+        color: white;
+    }
+    .head a{
+        text-decoration: none;
+        text-align: left;
+        font-size: 20px;
+    }
+    .head a:hover{
+        color: white;
+        font-size: 23px;
+    }
+    

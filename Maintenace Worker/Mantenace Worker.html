@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="Admin.css">
+<head>
+    <body onload="onloadControl()">
+            <div id="maintenance-button">
+                <h2 class="welcome">Welcome to Maintenace Worker page</h2>
+                <div class="admin-button">
+                    <button onclick="provideMaintemance()">provide Maintenece</button>
+                    <button onclick="viewMaintenanceRequest()">View Maintenace request</button>
+                    <button onclick="reportMaintened()">Report maintened</button>
+                </div>
+        </div>
+        <div id="provide-maintemance">
+            <h3>Provide Maintenace</h3>
+        </div>
+        <div id="view-maintenance-request">
+            <h3>View Maintenace Request</h3>
+        </div>
+        <div id="report-maintened">
+            <h3>Report Maintened </h3>
+        </div>
+    </body>
+</head>
+</html>
+<script>
+
+    function onloadControl(){
+        document.getElementById('maintenance-button').style.display="block";
+        document.getElementById('provide-maintemance').style.display="none";
+        document.getElementById('view-maintenance-request').style.display="none";
+        document.getElementById('report-maintened').style.display="none";
+    }
+    function provideMaintemance(){
+        document.getElementById('provide-maintemance').style.display="block";
+        document.getElementById('view-maintenance-request').style.display="none";
+        document.getElementById('report-maintened').style.display="none";
+
+        
+
+    }
+    function viewMaintenanceRequest(){
+        document.getElementById('provide-maintemance').style.display="none";
+        document.getElementById('view-maintenance-request').style.display="block";
+        document.getElementById('report-maintened').style.display="none";
+
+    }
+    function reportMaintened(){
+        document.getElementById('provide-maintemance').style.display="none";
+        document.getElementById('view-maintenance-request').style.display="none";
+        document.getElementById('report-maintened').style.display="block";
+    }
+</script>
