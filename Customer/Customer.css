@@ -9,7 +9,7 @@ body{
   .container {  
     width: 70%; 
     margin-left:70px;
-    height: 70px;
+    height: 90px;
     padding: 60px;  
     background-color: lightblue; 
     border-radius: 30px; 
@@ -17,19 +17,21 @@ body{
    .personal-information{
     width: 80%; 
     margin-left:40px;
-      padding: 60px;  
+    padding: 60px;  
+    padding-top: 120px;
     background-color: lightblue; 
   }
   .private-information{
     width: 80%; 
     margin-left:40px;
       padding: 60px;  
+      padding-top: 120px;
     background-color: lightblue; 
   }
   .public-information{
     width: 80%; 
     margin-left:40px;
-      padding: 60px;  
+      padding: 60px;  padding-top: 120px; 
     background-color: lightblue; 
   } 
     
@@ -93,9 +95,13 @@ body{
     margin-left: 90px;
     float: left;
     
-    /* height: 200px; */
-    /* gap: 3em; */
-    /* font-size: 30px; */
+   
+  }
+  .customer-action>h2{
+    color: #114a13;
+    padding-left: 140px;
+    margin-top: -10px;
+    font-size: 30px;
   }
   .customer-action>button{
 font-size: 24px;

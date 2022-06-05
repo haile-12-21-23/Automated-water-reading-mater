@@ -1,20 +1,86 @@
-.welcome{
-    display: block;
-    align-items: center;
-    align-content: center;
-    font-size: 24px;
-    font-family: 'Times New Roman', Times, serif;
-    padding-left: 120px;
-    padding-top: 50px;
-
+body{  
+    font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;  
+    background-color: rgb(163, 153, 155); 
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
 }
-.admin-button{
-    padding-left: 120px;
-    /* margin: 20px; */
+.admin-action{
+width: 70%; 
+    margin-left:70px;
+    height: 90px;
+    padding: 60px;  
+    background-color: lightblue; 
+    border-radius: 30px;
+}
+.admin-action>h2{
+    color:#415641;
+    padding-left: 140px;
+    margin-top: -60px;
+    font-size: 30px;
+}
+
+
+.admin-button>button{
+    font-size: 24px;
+    padding: 10px;
+    margin-left: 15px;
+    margin-top: 10px;
+    font-size: 20px;
+    font-family: 'Times New Roman';
+    background-color: rgb(44, 40, 40);
+    color: white;
+    cursor: pointer;
+    border-radius: 30px
     
 }
-.admin-button>button{
-    /* gap: 3rem; */
-    margin: 20px;
+.admin-button>button:hover{
+    background-color: green;
+    cursor: pointer;
 
+}
+.admin-button>button:focus{
+    background-color: #666;;
+    cursor: pointer;
+}
+.create-account{
+    width: 60%; 
+    margin-left:140px;
+    padding-top: 70px;
+      padding: 60px;  
+    background-color: lightblue;
+
+}
+.create-account>h3{
+    padding-left: 140px;
+    margin-top: -90px;
+    font-size: 30px;
+
+}
+.update-account{
+    width: 60%; 
+    margin-left:140px;
+    padding-top: 70px;
+      padding: 60px;  
+    background-color: lightblue;
+
+}
+.update-account>h3{
+    padding-left: 140px;
+    margin-top: -90px;
+    font-size: 30px;
+
+}
+.block-account{
+    width: 60%; 
+    margin-left:140px;
+    padding-top: 70px;
+      padding: 60px;  
+    background-color: lightblue;
+
+}
+.block-account>h3{
+    padding-left: 140px;
+    margin-top: -90px;
+    font-size: 30px;
 }

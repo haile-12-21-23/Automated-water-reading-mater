@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="Admin.css">
+<link rel="stylesheet" href="Bill Offer.css">
 <head>
     <body onload="onloadControl()">
-            <div id="officer-button">
+            <div id="officer-button" class="bill-officer-action">
                 <h2 class="welcome">Welcome to Bill Officer page</h2>
-                <div class="admin-button">
+                <div class="bill-officer-button" >
                     <button onclick="calculateBill()">Calculate Bill</button>
-                    <button onclick="generateBill()">Bill Report</button>
+                    <button onclick="generateBill()">Generate Report</button>
                     <button onclick="viewBillRport()">View Report</button>
                 </div>
         </div>
-        <div id="calculate-bill">
+        <div id="calculate-bill" class="calculate-bill">
             <h3>Calculate Bill</h3>
         </div>
-        <div id="generate-bill">
+        <div id="generate-bill" class="generate-bill">
             <h3>Generate Bill Report</h3>
         </div>
-        <div id="view-bill-report">
+        <div id="view-bill-report" class="view-bill-report">
             <h3>View  Bill Report </h3>
         </div>
     </body>

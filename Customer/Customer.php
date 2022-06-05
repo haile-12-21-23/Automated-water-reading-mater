@@ -1,15 +1,19 @@
 <?php
-class Personal{
-  // private
-private $firstname="";
-$middlename="";
-$lastname="";
-$Kebele="";
-$err=array();
-$congra="";
-}
+$firstName="";
+$middleName="";
+$lastName="";
+$kebele="";
+if(count($_POST)>0){
+require_once "autoload.php";
+$person=new personal();
+$errors=$person->personalRegisteration($_POST);
 
-//
+    if(count($errors)==0){
+        header("Location: welcome.php");
+        die;
+    }
+    extract($_POST);
+  }
 ?>
 
 <!DOCTYPE html>
@@ -40,30 +44,38 @@ $congra="";
         <input type="button" value="Private Organization" onclick="privateInformation();"  />
         <input type="button" value="Public and Govermental Institution" onclick="publicInformation();" />
     </div>
-<? php 
-echo "Hello Customer";
-?>
 
-    <form class="container" action="Customer.html" method="post">
+
+    <form class="container" action="Customer.php" method="post">
+      <?php if(isset($errors)&& is_array($errors) && count($errors)>0):
+      ?>
+      <div class="error">
+        <?php foreach($errors as $error):?>
+          <?=$error?><br>
+
+        <?php endforeach;?>
+      </div>
+      <?php endif;?>
     <!-- The beggining of Customer information-->
 
       <div id="personal" class="personal-information">
           <h3 style="font-size:26px;font-family:Times New Roman;font-weight: bold;text-align: center;">Personal Information</h3>
           <label style="font-size:24px;font-family:Times New Roman;font-weight: bold;"> First Name </label>   
-          <input type="text" name="firstname" placeholder= "Firstname" size="15" required />   
+          <input type="text" name="firstName" placeholder= "Firstname" size="15" value="<?=$firstName?>" auto.required/>   
           <label style="font-size:24px;font-family:Times New Roman;font-weight: bold;"> Middle Name: </label>   
-          <input type="text" name="middlename" placeholder="Middlename" size="15" required />   
+          <input type="text" name="middleName" placeholder="Middlename" size="15" value="<?=$middleName?>" required />   
           <label style="font-size:24px;font-family:Times New Roman;font-weight: bold;"> Last Name: </label>    
-          <input type="text" name="lastname" placeholder="Lastname" size="15"required />   
+          <input type="text" name="lastName" placeholder="Lastname" size="15" value="<?=$lastName?>" required />   
             <label style="font-size:24px;font-family:Times New Roman;font-weight: bold" class="LabelPersonal"> Kebele:</label>
-          <input type="text" name="Kebele"  placeholder="Kebele" required/>
-          <button style="font-size:24px;font-family:Times New Roman;font-weight: bold;" type="submit" class="registerbtn" name="personal">Register</button> 
+          <input type="text" name="kebele"  placeholder="Kebele" value="<?=$kebele?>" required/>
+          <input style="font-size:24px;font-family:Times New Roman;font-weight: bold;" type="submit" class="registerbtn" name="personal" value="Register"> 
           Alrady Register? <a href="../Home/Login/Login_true.php">Login</a>
       </div> 
+    </form>
 
 
 
-
+<form>
       <div id="private" class="private-information">
             <h3 style="font-size:26px;font-family:Times New Roman;font-weight: bold;text-align: center;">Organization Information</h3>
             <label style="font-size:24px;font-family:Times New Roman;font-weight: bold;"> Organazation Name: </label>   

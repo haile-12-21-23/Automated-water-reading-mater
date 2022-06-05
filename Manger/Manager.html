@@ -2,25 +2,25 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="Admin.css">
+    <link rel="stylesheet" href="Manager.css">
     <title>Manager Page</title>
 </head>
     <body onload="onloadControl()">
-            <div id="manager-button">
-                <h2 class="welcome">Welcome to Manager page</h2>
-                <div class="manager-button">
+            <div id="manager-button" class="manager-action">
+                <h2 >Welcome to Manager page</h2>
+                <div class="manager-button" aria-colcount="manager-button">
                     <button onclick="approveMaintenanceRequest()">Approve maintenance Request</button>
                     <button onclick="controlService()">Control Service</button>
                     <button onclick="viewReport()">View Report</button>
                 </div>
         </div>
-        <div id="approve-maintenance-request">
+        <div id="approve-maintenance-request" class="approve-maintenance-request">
             <h3>Approve maintenance Request</h3>
         </div>
-        <div id="control-service">
+        <div id="control-service" class="control-service">
             <h3>Control Service</h3>
         </div>
-        <div id="view-report">
+        <div id="view-report" class="view-report">
             <h3>View Report</h3>
         </div>
     </body>
