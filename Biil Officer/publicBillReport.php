@@ -17,6 +17,10 @@ require_once "connection.php";
     <div class="table-responsive container mt-5">
         <div class="col-md-12">
             <div class="card">
+                <div class="container" style="margin-top:15px">
+                    <a href="printAllPublicBill.php" class="btn btn-success btn-lg btn-lg mb-2"><span>Print
+                            Report</span></a>
+                </div>
                 <div class="card-header">
                     <h4>Public and governmental institution Bill records
                         <a href="publicBill.php" class="btn btn-danger float-end">Back</a>
@@ -53,18 +57,11 @@ require_once "connection.php";
                         // $row_name=$result->fetch_array(MYSQLI_ASSOC);
 
                         // $row_bill=$result->fetch_array(MYSQLI_ASSOC);
-                        if ($result_name->num_rows > 0 && $result_bill->num_rows > 0) {
-                            while (($row_name = $result_name->fetch_assoc()) && ($row_bill = $result_bill->fetch_assoc())) {
-                                $id = $row_name['PID'];
-                                $name = $row_name['publicName'];
-
-
-
-
-
-
-
-
+                        if ($result_bill->num_rows > 0) {
+                            while ($row_bill = $result_bill->fetch_assoc()) {
+                                $id = $row_bill['No'];
+                                $name = $row_bill['publicname'];
+                                $meterId = $row_bill['meterID'];
 
                                 $currentReading = $row_bill['current_reading'];
                                 $previousReading = $row_bill['previous_reading'];
@@ -77,7 +74,7 @@ require_once "connection.php";
                                 echo '<tr class="m-uto">
                     <th scope="row">' . $id . '</th>
                     <td>' . $name . '</td>
-                     <td>meter Id</td>
+                     <td>' . $meterId . '</td>
                     <td>' . $currentReading . '</td>
                     <td>' . $previousReading . '</td>
                     <td>' . $netReading . ' </td>
@@ -86,8 +83,9 @@ require_once "connection.php";
                      <td>' . $createdDate . '</td>
                    
                      <td>
-                    <button class="btn btn-primary btn-sm "><a href="updateUserPrivate.php? updateid=' . $id . '" class="text-light text-decoration-none">update</a></button > 
-                    <button class="btn btn-danger btn-sm"><a href="deleteUserPrivate.php? deleteid=' . $id . '" class="text-light text-decoration-none">delete</a></button >
+                    <button class="btn btn-success btn-sm "><a href="printEachPublicBill.php? printid=' . $id . '" class="text-light text-decoration-none">print</a></button > 
+                    <button class="btn btn-primary btn-sm "><a href="PublicBillView.php? viewid=' . $id . '" class="text-light text-decoration-none">view</a></button >
+                    <button class="btn btn-danger btn-sm"><a href="deletepublicBill.php? deleteid=' . $id . '" class="text-light text-decoration-none">delete</a></button >
                     
                 </td>
                 </tr>';

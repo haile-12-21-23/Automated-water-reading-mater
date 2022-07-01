@@ -1,30 +1,30 @@
 <?php
+include "connection.php";
+$id = $_GET['aid'];
+// $sql = "SELECT *FROM approverequest where No=$id";
+// $result = $connect->query($sql);
+// $row = $result->fetch_assoc();
+// $id = $row['No'];
+// $name = $row['name'];
+// $email = $row['email'];
+// $mobile = $row['mobile'];
+// $password = $row['password'];
 
-    $id=$_GET['updateid'];
-    $sql="SELECT *FROM approverequest where No=$id";
-    $result=$connect->query($sql);
-       $row=$result->fetch_assoc();
-       $id=$row['No'];
-                        $name=$row['name'];
-                        $email=$row['email'];
-                        $mobile=$row['mobile'];
-                        $password=$row['password'];
 
-    
- if (isset($_POST['submit'])) {
-     $name=$_POST['name'];
-     $email=$_POST['email'];
-     $mobile=$_POST['mobile'];
-     $password=$_POST['password'];
-     $sql="update  approverequest set No=$id,name='$name',email='$email',mobile='$mobile',password='$password' where no=$id ";
-     $result=$connect->query($sql);
-     if ($result) {
+// if (isset($_POST['submit'])) {
+//     $name = $_POST['name'];
+//     $email = $_POST['email'];
+//     $mobile = $_POST['mobile'];
+//     $password = $_POST['password'];
+    $sql = "UPDATE maintenancerequest SET status=2  WHERE Id = '$id'";
+    $result = $connect->query($sql);
+    if ($result) {
         //  echo "updated Successfully";
-      header('Location:DisplayRequest.php');
-     } else {
-         die("Couldn't update data".$sql.$connect->error);
-     }
- }
+        header('Location:DisplayRequest.php');
+    } else {
+        die("Couldn't update data" . $sql . $connect->error);
+    }
+
 
 ?>
 <!DOCTYPE html>
@@ -46,30 +46,31 @@
 
 <body>
     <div class="container my-5">
-        <form method="POST">
+        <!-- <form method="POST">
             <div class="form-group">
                 <label class="form-label">Name:</label>
-                <input type=" text" class="form-control" name="name" placeholder="your name" value="<?php echo $name?>">
+                <input type=" text" class="form-control" name="name" placeholder="your name"
+                    value="<?php echo $name ?>">
             </div>
             <div class="form-group">
                 <label class="form-label">Email:</label>
                 <input type="email" class="form-control" name="email" placeholder="your email"
-                    value="<?php echo $email?>">
+                    value="<?php echo $email ?>">
             </div>
             <div class="form-group">
                 <label class="form-label">mobile:</label>
                 <input type="text" class="form-control" name="mobile" placeholder="your mobile"
-                    value="<?php echo $mobile?>">
+                    value="<?php echo $mobile ?>">
             </div>
             <div class="form-group mb-3">
                 <label class="form-label">password:</label>
                 <input type="password" class="form-control" name="password" placeholder="your password"
-                    value="<?php echo $password?>">
+                    value="<?php echo $password ?>">
             </div>
 
 
             <button type="submit" class="btn btn-primary" name="submit">update</button>
-        </form>
+        </form> -->
     </div>
 
 </body>

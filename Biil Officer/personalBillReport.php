@@ -17,6 +17,10 @@ require_once "connection.php";
     <div class="table-responsive container mt-5">
         <div class="col-md-12">
             <div class="card">
+                <div class="container" style="margin-top:15px">
+                    <a href="printAllPersonalBill.php" class="btn btn-success btn-lg btn-lg mb-2"><span>Print
+                            Report</span></a>
+                </div>
                 <div class="card-header">
                     <h4>Personal Bill records
                         <a href="personalBill.php" class="btn btn-danger float-end">Back</a>
@@ -58,14 +62,6 @@ require_once "connection.php";
                                 $id = $row_bill['No'];
                                 $name = $row_bill['name'];
                                 $meterId = $row_bill['meterID'];
-
-
-
-
-
-
-
-
                                 $currentReading = $row_bill['current_reading'];
                                 $previousReading = $row_bill['previous_reading'];
                                 $netReading = $row_bill['net_reading'];
@@ -84,11 +80,11 @@ require_once "connection.php";
                      <td>' . $priceRate . '</td>
                      <td>' . $totalPrice . ' </td>
                      <td>' . $createdDate . '</td>
-                   
+                  
                      <td>
-                    <button class="btn btn-success btn-sm "><a href="updateUserPrivate.php? updateid=' . $id . '" class="text-light text-decoration-none">print</a></button > 
+                    <button class="btn btn-success btn-sm "><a href="printEachPersonalBill.php? printid=' . $id . '" class="text-light text-decoration-none">print</a></button > 
                      <button class="btn btn-primary btn-sm "><a href="personalBillView.php? viewid=' . $id . '" class="text-light text-decoration-none">View</a></button > 
-                    <button class="btn btn-danger btn-sm"><a href="deleteUserPrivate.php? deleteid=' . $id . '" class="text-light text-decoration-none">delete</a></button >
+                    <button class="btn btn-danger btn-sm"><a href="deletePersonalBill.php? deleteid=' . $id . '" class="text-light text-decoration-none">delete</a></button >
                     
                 </td>
                 </tr>';

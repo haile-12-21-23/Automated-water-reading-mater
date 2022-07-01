@@ -19,7 +19,7 @@
         <form action="" method="POST" class="mb-3 ">
             <div class="input-group">
                 <select name="account">
-                    <option disabled selected> Choose...</option>
+
                     <option value=" 1">personal Customer</option>
                     <option value="2">private organization customer</option>
                     <option value="3">public and govermental institution</option>
@@ -40,49 +40,49 @@
             <tbody>
 
                 <?php
-    if (isset($_POST['submit'])) {
-        if (!empty($_POST['account'])) {
-            $selected = $_POST['account'];
-            // echo 'You have chosen: ' . $selected;
-            if ($selected==1) {
-                header('Location:personalBill.php');
-            } elseif ($selected==2) {
-                header('Location:privateBill.php');
-            } elseif ($selected==3) {
-                header('Location:publicBill.php');
-            } else {
-                echo '<p class="text-danger">Please select the customer type first.</p>';
-            }
-        }
-    }
-?>
+                if (isset($_POST['submit'])) {
+                    if (!empty($_POST['account'])) {
+                        $selected = $_POST['account'];
+                        // echo 'You have chosen: ' . $selected;
+                        if ($selected == 1) {
+                            header('Location:personalBill.php');
+                        } elseif ($selected == 2) {
+                            header('Location:privateBill.php');
+                        } elseif ($selected == 3) {
+                            header('Location:publicBill.php');
+                        } else {
+                            echo '<p class="text-danger">Please select the customer type first.</p>';
+                        }
+                    }
+                }
+                ?>
 
                 <!-- <?php
-                $sql="SELECT * FROM approverequest";
-                $result=$connect->query($sql);
-                if ($result) {
-                    while ($row=$result->fetch_assoc()) {
-                        $id=$row['No'];
-                        $name=$row['name'];
-                        $email=$row['email'];
-                        $mobile=$row['mobile'];
-                        $password=$row['password'];
-                        echo '<tr>
-                    <th scope="row">'.$id.'</th>
-                    <td>'.$name.'</td>
-                    <td>'.$email.'</td>
-                    <td>'.$mobile.'<td>
-                    <td>'.$password.'<td>
+                        $sql = "SELECT * FROM approverequest";
+                        $result = $connect->query($sql);
+                        if ($result) {
+                            while ($row = $result->fetch_assoc()) {
+                                $id = $row['No'];
+                                $name = $row['name'];
+                                $email = $row['email'];
+                                $mobile = $row['mobile'];
+                                $password = $row['password'];
+                                echo '<tr>
+                    <th scope="row">' . $id . '</th>
+                    <td>' . $name . '</td>
+                    <td>' . $email . '</td>
+                    <td>' . $mobile . '<td>
+                    <td>' . $password . '<td>
                     
                      <td>
-                    <button class="btn btn-primary"><a href="update.php? updateid='.$id.'" class="text-light">update</a></button > 
-                    <button class="btn btn-danger"><a href="delete.php? deleteid='.$id.'" class="text-light">delete</a></button >
+                    <button class="btn btn-primary"><a href="update.php? updateid=' . $id . '" class="text-light">update</a></button > 
+                    <button class="btn btn-danger"><a href="delete.php? deleteid=' . $id . '" class="text-light">delete</a></button >
                     
                 </td>
                 </tr>';
-                    }
-                }
-                ?> -->
+                            }
+                        }
+                        ?> -->
 
             </tbody>
         </table>
@@ -92,6 +92,11 @@
 
 </body>
 
-</html>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous">
+</script>
 
 </html>

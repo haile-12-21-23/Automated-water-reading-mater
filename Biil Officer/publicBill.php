@@ -129,7 +129,7 @@ if (isset($_POST['sumbitData'])) {
 
 
                     <button class="btn btn-primary mx-2" name="sumbitData">Submit</button>
-                    <a class="btn btn-success mx-3" href="publicBillForm.php">View record</a>
+                    <a class="btn btn-success mx-3" href="publicBillReport.php">View record</a>
                 </form>
             </div>
 
