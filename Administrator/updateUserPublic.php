@@ -1,28 +1,33 @@
 <?php
 require_once "connection.php";
-
-$id=$_GET['updateid'];
-$sql="SELECT *FROM adminpublicaccount where No=$id";
-$result=$connect->query($sql);
-$row=$result->fetch_assoc();
-$id=$row['No'];
-$name=$row['publicName'];
-$mobile=$row['publicPhone'];
-$password=$row['password'];
-
+$id = $_GET['updateid'];
+$sql = "SELECT * FROM accountcustomer where No=$id
+                ";
+$result = $connect->query($sql);
+$row = $result->fetch_assoc();
+$id = $row['No'];
+$name = $row['name'];
+$phone = $row['phone'];
+$accountNumber = $row['Accountnumber'];
+$balance = $row['balance'];
+$password = $row['password'];
+$type = $row['type'];
 
 if (isset($_POST['submit'])) {
-    $name=$_POST['name'];
-    $mobile=$_POST['mobile'];
-    $password=$_POST['password'];
-    $sql="update adminpublicaccount set No=$id,publicName='$name',publicPhone='$mobile',password='$password' where No=$id ";
-    $result=$connect->query($sql);
+    $name = $_POST['name'];
+    $phone = $_POST['phone'];
+    $accountNumber = $_POST['account'];
+    $balance = $_POST['balance'];
+    $password = $_POST['password'];
+    $type = $_POST['type'];
+    $sql = "update accountcustomer set No=$id,name='$name',phone='$phone',Accountnumber='$accountNumber',balance='$balance',password='$password' ,type='$type 'where No=$id ";
+    $result = $connect->query($sql);
     if ($result) {
-        // echo "updated Successfully";
-        header('Location:userPublic.php');
-    // Administrator\userperson.php
+        $_SESSION['message'] = "Successfuly updated";
+        header('Location:userpublic.php');
+        // Administrator\userperson.php
     } else {
-        die("Couldn't update data".$sql.$connect->error);
+        die("Couldn't update data" . $sql . $connect->error);
     }
 }
 
@@ -35,37 +40,55 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        Approve maintenance Request
+        public account updating
     </title>
+    <link rel="stylesheet" href="../Customer//RegisterCustomer/style.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-
+    <script>
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+    </script>
 
 </head>
 
 <body>
     <div class="container my-5">
-        <form method="POST">
-            <div class="form-group">
-                <label class="form-label">Institution Name:</label>
-                <input type=" text" class="form-control" name="name" placeholder="your name" value="<?php echo $name?>">
-            </div>
-            <div class="form-group">
-                <label class="form-label"> Institution mobile:</label>
-                <input type="text" class="form-control" name="mobile" placeholder="your mobile"
-                    value="<?php echo $mobile?>">
-            </div>
-            <div class="form-group mb-3">
-                <label class="form-label">password:</label>
-                <input type="password" class="form-control" name="password" placeholder="your password"
-                    value="<?php echo $password?>">
-            </div>
-
-
-            <button type="submit" class="btn btn-primary" name="submit">update</button>
-        </form>
-    </div>
+        <div class="form-container">
+            <form action="" method="post">
+                <h3 class="bg-success bg-opacity-20 p-3 w-60 mx-auto">Update Account here</h3>
+                <div class="" id="m-display">
+                    <?php
+                    if (isset($_POST['create'])) {
+                        require_once "message.php";
+                    }
+                    // session_abort();
+                    ?>
+                </div>
+                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Name:</label>
+                <input type="text" name="name" class="box" placeholder="Name of person" value="<?php echo $name ?>"
+                    required>
+                <label class="form-label text-start fs-4  w-100 bg-opacity-10 mx-2">Phone number</label>
+                <input type="text" name="phone" class="box" placeholder="phone of person" value="<?php echo $phone ?>"
+                    required>
+                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Account number</label>
+                <input type="text" name="account" class="box" placeholder="Count number of customer"
+                    value="<?php echo $accountNumber ?>" required>
+                <label class=" form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Balance</label>
+                <input type="text" class="box" name="balance" placeholder="customer amount"
+                    value="<?php echo $balance ?>" required>
+                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">password</label>
+                <input type="text" class="box" name="password" placeholder="password of customer"
+                    value="<?php echo $password ?>" required>
+                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Type</label>
+                <input type="text" name="type" class="box" placeholder="customer type" value="<?php echo $type ?>"
+                    equired>
+                <button type="submit" class="btn btn-primary w-50 mx-auto" name="submit">update</button>
+            </form>
+        </div>
 
 </body>
 

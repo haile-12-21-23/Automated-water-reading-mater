@@ -1,38 +1,38 @@
 <?php
 require_once "connection.php";
-// $cid = $_GET['cid'];
-$type = "manager";
-// $sql = "SELECT GID,insname ,insphone FROM registerpublic where GID=$cid
-//                 ";
-// $result = $connect->query($sql);
-// $row = $result->fetch_assoc();
-// $name = $row['insname'];
-// $phone = $row['insphone'];
+
+$id = $_GET['updateid'];
+$sql = "SELECT *FROM accountstaff where SID=$id";
+$result = $connect->query($sql);
+$row = $result->fetch_assoc();
+$idS = $row['SID'];
+$nameS = $row['name'];
+$mobileS = $row['phone'];
+
+$emailS = $row['email'];
+
+$passwordS = $row['password'];
+
+$type = $row['type'];
+
+
 if (isset($_POST['create'])) {
     $name = $_POST['name'];
-    $phone = $_POST['phone'];
     $email = $_POST['email'];
+    $mobile = $_POST['mobile'];
     $password = $_POST['password'];
-
-    $sql = "SELECT *  FROM accountstaff where email=$email";
-
+    $type=$_POST['type'];
+    $sql = "update accountstaff set SID=$id,name='$name',phone='$mobile',email='$email',password='$password',type='$type' where SID=$id ";
     $result = $connect->query($sql);
-
-    if ($result->num_rows > 0) {
-        $_SESSION['message'] = "Email is aready exist use unique email";
-        header('Location:userBillOfficerForm.php');
+    if ($result) {
+        // echo "updated Successfully";
+        header('Location:userBillOfficer.php');
+        // Administrator\userperson.php
     } else {
-        $sql = "INSERT INTO accountstaff (name,phone,email,password,type) VALUES('$name','$phone','$email' ,'$password','$type')";
-        $result = $connect->query($sql);
-        if ($result) {
-            $_SESSION['message'] = "Account created Successfully";
-            header('Location:userManager.php');
-        } else {
-            $_SESSION['message'] = "Couldn't insert data" . $sql . $connect->error;
-            header('Location:userManagerForm.php');
-        }
+        die("Couldn't update data" . $sql . $connect->error);
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +42,7 @@ if (isset($_POST['create'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        bill officer create account page
+        Approve maintenance Request
     </title>
     <link rel="stylesheet" href="../Customer//RegisterCustomer/style.css">
 
@@ -50,15 +50,10 @@ if (isset($_POST['create'])) {
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 
-    <script>
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href);
-    }
-    </script>
+
 </head>
 
 <body>
-
     <div class="container my-5">
         <div class="form-container">
             <form action="" method="post" enctype="multipart/form-data">
@@ -71,23 +66,30 @@ if (isset($_POST['create'])) {
                     // session_abort();
                     ?>
                 </div>
-                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Name</label>
-                <input type="text" name="name" class="box" placeholder="Name of Bill officer" value="" required>
+                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Name:</label>
+                <input type="text" name="name" class="box" placeholder="Name of person" value="<?php echo $nameS ?>"
+                    required>
                 <label class="form-label text-start fs-4  w-100 bg-opacity-10 mx-2">Phone number</label>
-                <input type="text" name="phone" class="box" placeholder="phone of Bill officer" value="" required>
-                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">email</label>
-                <input type="email" name="email" class="box" placeholder="email Bill officer" required>
-                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">password</label>
-                <input type="text" class="box" name="password" placeholder="password of Bill officer" required>
+                <input type="text" name="mobile" class="box" placeholder="phone of person"
+                    value="<?php echo $mobileS ?>" required>
+                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Email</label>
+                <input type="email" name="email" class="box" placeholder="Count number of customer" value="
+                    <?php echo $emailS ?>" required>
+
+                <label class=" form-label text-start fs-4 w-100 bg-opacity-10 mx-2">password</label>
+                <input type="text" class="box" name="password" placeholder="password of customer"
+                    value=" <?php echo $passwordS ?>" required>
                 <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Type</label>
                 <input type="text" name="type" class="box" placeholder="customer type" value="<?php echo $type ?>"
-                    equired disabled>
-                <input type="submit" name="create" class="btn btn-primary w-50 mx-auto" value="Create">
+                    equired>
+                <input type="submit" name="create" class="btn btn-primary w-50 mx-auto" value="update">
 
             </form>
         </div>
 
 </body>
+
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
     integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
 </script>

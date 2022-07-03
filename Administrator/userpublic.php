@@ -1,6 +1,7 @@
 <?php
-echo "welcome to public";
-require_once"connection.php";
+
+require_once "connection.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,41 +16,111 @@ require_once"connection.php";
 </head>
 
 <body>
-    <div class="container">
-        <button class="btn btn-primary my-5"> <a class="text-light text-decoration-none" href="userpublicForm.php">Add
-                user</a>
-        </button>
+    <div class="container mb-5">
+        <h3 class="text-center mb-2 mt-2 mx-auto fs-3">welcome to Governmental and public Institution</h3>
+
+
         <table class="table m-1">
+
+            <h3 class=" text-center mb-2 mt-2 mx-auto fs-3"> Governmental and public Institution user lists</h3>
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Institution Name</th>
-                    <th scope="col"> Institution mobile</th>
-                    <th scope="col">password</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">mobile</th>
+
                     <th scope="col">operation</th>
                 </tr>
             </thead>
             <tbody>
 
                 <?php
-                $sql="SELECT * FROM adminpublicaccount";
-                $result=$connect->query($sql);
+                $sql = "SELECT GID,insname ,insphone FROM registerpublic
+                ";
+                $result = $connect->query($sql);
+
                 if ($result) {
-                    while ($row=$result->fetch_assoc()) {
-                        $id=$row['No'];
-                        $name=$row['publicName'];
-                        $mobile=$row['publicPhone'];
-                        $password=$row['password'];
+                    while ($row = $result->fetch_assoc()) {
+                        $id = $row['GID'];
+                        $name = $row['insname'];
+                        $phone = $row['insphone'];
+
                         echo '<tr>
-                    <th scope="row">'.$id.'</th>
-                    <td>'.$name.'</td>
-                    <td>'.$mobile.'</td>
-                    <td>'.$password.'</td>
+                    <th scope="row">' . $id . '</th>
+                    <td>' . $name . '</td>
+                    <td>' . $phone . '</td>
+                   
+                    
                     
                      <td>
-                    <button class="btn btn-primary "><a href="updateUserPublic.php? updateid='.$id.'" class="text-light text-decoration-none">update</a></button > 
-                    <button class="btn btn-danger"><a href="deleteUserPublic.php? deleteid='.$id.'" class="text-light text-decoration-none">delete</a></button >
-                    
+                
+                       <button class="btn btn-success btn-sm "> <a class="text-light text-decoration-none"
+                href="userPublicForm.php? cid=' . $id . '">
+                Creat account</a>
+                </button>
+
+                </td>
+                </tr>';
+                    }
+                }
+                ?>
+
+            </tbody>
+        </table>
+
+        <h3 class=" text-center mb-2 mt-2 mx-auto fs-3"> Governmental and public Institution user account lists</h3>
+        <table class="table m-1">
+            <thead>
+                <tr>
+
+
+                    <th scope="col">No</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">mobile</th>
+                    <th scope="col">Account number</th>
+                    <th scope="col">balance</th>
+                    <th scope="col">password</th>
+                    <th scope="col">type</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <?php
+
+
+                $sql = "SELECT * FROM accountcustomer where type='public'
+                ";
+                $result = $connect->query($sql);
+
+                if ($result) {
+                    while ($row = $result->fetch_assoc()) {
+                        $id = $row['No'];
+                        $name = $row['name'];
+                        $phone = $row['phone'];
+                        $accountNumber = $row['Accountnumber'];
+                        $balance = $row['balance'];
+                        $password = $row['password'];
+                        $type = $row['type'];
+                        echo '<tr>
+                    <th scope="row">' . $id . '</th>
+                    <td>' . $name . '</td>
+                    <td>' . $phone . '</td>
+                    <td>' . $accountNumber . '</td>
+                     <td>' . $balance . '</td>
+                      <td>' . $password . '</td>
+                       <td>' . $type . '</td>
+
+                
+               
+                     <td>
+                
+                <button class="btn btn-primary btn-sm"><a href="updateUserPublic.php? updateid=' . $id . '"
+                        class="text-light text-decoration-none">update</a></button>
+                <button class="btn btn-danger btn-sm"><a href="deleteUserPublic.php? deleteid=' . $id . '"
+                        class="text-light text-decoration-none">delete</a></button>
+
                 </td>
                 </tr>';
                     }
@@ -60,6 +131,15 @@ require_once"connection.php";
         </table>
     </div>
 
+
+
+
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous">
+</script>
 
 </html>

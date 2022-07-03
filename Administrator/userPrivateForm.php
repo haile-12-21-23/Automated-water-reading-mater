@@ -1,24 +1,33 @@
 <?php
 require_once "connection.php";
-if (isset($_POST['sumbit'])) {
-    $name=$_POST['name'];
-    $mobile=$_POST['mobile'];
-    $password=$_POST['password'];
-    
-    $stmt_user="SELECT * from adminprivateaccount where mobile='$mobile'" ;
+$cid = $_GET['cid'];
+$type = "private";
+$sql = "SELECT OID,orgname ,orgphone FROM registerprivate where OID=$cid
+                ";
+$result = $connect->query($sql);
+$row = $result->fetch_assoc();
+$name = $row['orgname'];
+$phone = $row['orgphone'];
+if (isset($_POST['create'])) {
+    $accountNumber = $_POST['account'];
 
-    $result=$connect->query($stmt_user);
-    if ($result->num_rows>0) {
-        echo "mobile number already exist";
-        header('Location:userPrivateForm.php');
+    $balance = $_POST['balance'];
+    $password = $_POST['password'];
+
+
+    $sql = "SELECT * FROM accountcustomer where Accountnumber=$accountNumber
+                ";
+    $result = $connect->query($sql);
+    if ($result->num_rows > 0) {
+        $_SESSION['message'] = "Account aready exist use unique number";
     } else {
-        $sql="INSERT INTO adminprivateaccount (orgName,orgMobile,password) VALUES('$name','$mobile','$password' )";
-        $result=$connect->query($sql);
+        $sql = "INSERT INTO accountcustomer (name,phone,Accountnumber,balance	,password,type) VALUES('$name','$phone','$accountNumber','$balance' ,'$password','$type')";
+        $result = $connect->query($sql);
         if ($result) {
-            // echo "Data inserted Successfully";
+            $_SESSION['message'] = "Account created Successfully";
             header('Location:userPrivate.php');
         } else {
-            die("Couldn't insert data".$sql.$connect->error);
+            die("Couldn't insert data" . $sql . $connect->error);
         }
     }
 }
@@ -31,36 +40,62 @@ if (isset($_POST['sumbit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        Approve maintenance Request
+        Personal user create account page
     </title>
+    <link rel="stylesheet" href="../Customer//RegisterCustomer/style.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 
-
+    <script>
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+    </script>
 </head>
 
 <body>
+
     <div class="container my-5">
-        <form method="POST">
-            <div class="form-group">
-                <label class="form-label">Organization Name:</label>
-                <input type=" text" class="form-control" name="name" placeholder="your name">
-            </div>
-            <div class="form-group">
-                <label class="form-label"> Organization mobile:</label>
-                <input type="text" class="form-control" name="mobile" placeholder="your mobile">
-            </div>
-            <div class="form-group mb-3">
-                <label class="form-label">password:</label>
-                <input type="password" class="form-control" name="password" placeholder="your password">
-            </div>
+        <div class="form-container">
+            <form action="" method="post">
+                <h3 class="bg-success bg-opacity-20 p-3 w-60 mx-auto">Create Account here</h3>
+                <div class="" id="m-display">
+                    <?php
+                    if (isset($_POST['create'])) {
+                        require_once "message.php";
+                    }
+                    // session_abort();
+                    ?>
+                </div>
+                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Name:</label>
+                <input type="text" name="name" class="box" placeholder="Name of person" value="<?php echo $name ?>"
+                    required disabled>
+                <label class="form-label text-start fs-4  w-100 bg-opacity-10 mx-2">Phone
+                    number</label>
+                <input type="text" name="phone" class="box" placeholder="phone of person" value="<?php echo $phone ?>"
+                    required disabled>
+                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Account number</label>
+                <input type="text" name="account" class="box" placeholder="Count number of customer" required>
+                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Balance</label>
+                <input type="text" class="box" name="balance" placeholder="customer amount" required>
+                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">password</label>
+                <input type="text" class="box" name="password" placeholder="password of customer" required>
+                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Type</label>
+                <input type="text" name="type" class="box" placeholder="customer type" value="<?php echo $type ?>"
+                    equired disabled>
+                <input type="submit" name="create" class="btn btn-primary w-50 mx-auto" value="Create">
 
-
-            <button type="submit" class="btn btn-primary" name="sumbit">Submit</button>
-        </form>
-    </div>
+            </form>
+        </div>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous">
+</script>
 
 </html>

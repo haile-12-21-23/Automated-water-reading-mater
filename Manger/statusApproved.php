@@ -16,14 +16,14 @@ $id = $_GET['aid'];
 //     $email = $_POST['email'];
 //     $mobile = $_POST['mobile'];
 //     $password = $_POST['password'];
-    $sql = "UPDATE maintenancerequest SET status=2  WHERE Id = '$id'";
-    $result = $connect->query($sql);
-    if ($result) {
-        //  echo "updated Successfully";
-        header('Location:DisplayRequest.php');
-    } else {
-        die("Couldn't update data" . $sql . $connect->error);
-    }
+$sql = "UPDATE maintenancerequest SET status=2  WHERE Id = '$id'";
+$result = $connect->query($sql);
+if ($result) {
+    //  echo "updated Successfully";
+    header('Location:mainteneceRequests.php');
+} else {
+    die("Couldn't update data" . $sql . $connect->error);
+}
 
 
 ?>

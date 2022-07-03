@@ -8,11 +8,7 @@ if ($result->num_rows > 0) {
 }
 $insName = $row['insname'];
 $insPhone = $row['insphone'];
-// $orgName = $_SESSION['orgname'];
-// $orgPhone = $_SESSION['orgPhone'];
-// if (!isset($name) && !isset($phone)) {
-//     header('Location:LoginPersonal.php');
-// }
+
 
 ?>
 <!DOCTYPE html>

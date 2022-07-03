@@ -90,7 +90,7 @@ VALUES ('$name', '$phone', '$kebele','$profile','$personalId','$homePlan')";
             <input type="file" class="box" name="Pid" accept="image/jpg, image/jpeg , image/png" required>
             <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Home map</label>
             <input type="file" name="home-plan" class="box" accept="image/jpg, image/jpeg , image/png" required>
-            <input type="submit" name="register" class="btn" value="Register">
+            <input type="submit" name="register" class="btn btn-primary" value="Register">
             <p>already have an account <a href="LoginPersonal.php">Login</a></p>
         </form>
     </div>

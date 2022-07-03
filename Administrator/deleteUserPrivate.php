@@ -3,7 +3,7 @@ require_once "connection.php";
 if (isset($_GET['deleteid'])) {
     $id=$_GET['deleteid'];
 
-    $sql="DELETE from adminprivateaccount where No='$id' ";
+    $sql="DELETE from accountcustomer where No='$id' ";
     $resuslt=$connect->query($sql);
     if ($resuslt) {
         // echo "deleted succesfully";

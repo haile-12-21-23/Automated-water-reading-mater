@@ -25,6 +25,7 @@
                     <option value="3">public and govermental institution</option>
                 </select>
                 <input type="submit" class="btn btn-secondary p-2.7 m-3" name="submit" value="calculate bill">
+                <a class="btn btn-secondary p-2.7 m-3" href="orgAccount.php">View payment</a>
         </form>
         <table class="table">
             <thead>

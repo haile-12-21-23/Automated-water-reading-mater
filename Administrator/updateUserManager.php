@@ -1,30 +1,35 @@
 <?php
 require_once "connection.php";
 
-$id=$_GET['updateid'];
-$sql="SELECT *FROM adminmanageraccount where MID=$id";
-$result=$connect->query($sql);
-$row=$result->fetch_assoc();
-$id=$row['MID'];
-$name=$row['managerName'];
-$email=$row['managerEmail'];
-$mobile=$row['managerMobile'];
-$password=$row['password'];
+$id = $_GET['updateid'];
+$sql = "SELECT *FROM accountstaff where SID=$id";
+$result = $connect->query($sql);
+$row = $result->fetch_assoc();
+$idS = $row['SID'];
+$nameS = $row['name'];
+$mobileS = $row['phone'];
+
+$emailS = $row['email'];
+
+$passwordS = $row['password'];
+
+$type = $row['type'];
 
 
-if (isset($_POST['submit'])) {
-    $name=$_POST['name'];
-    $email=$_POST['email'];
-    $mobile=$_POST['mobile'];
-    $password=$_POST['password'];
-    $sql="update adminmanageraccount set MID=$id,managerName='$name',managerEmail='$email',managerMobile='$mobile',password='$password' where MID=$id ";
-    $result=$connect->query($sql);
+if (isset($_POST['create'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $mobile = $_POST['mobile'];
+    $password = $_POST['password'];
+    $type = $_POST['type'];
+    $sql = "update accountstaff set SID=$id,name='$name',phone='$mobile',email='$email',password='$password',type='$type' where SID=$id ";
+    $result = $connect->query($sql);
     if ($result) {
         // echo "updated Successfully";
         header('Location:userManager.php');
-    // Administrator\userperson.php
+        // Administrator\userperson.php
     } else {
-        die("Couldn't update data".$sql.$connect->error);
+        die("Couldn't update data" . $sql . $connect->error);
     }
 }
 
@@ -39,6 +44,8 @@ if (isset($_POST['submit'])) {
     <title>
         Approve maintenance Request
     </title>
+    <link rel="stylesheet" href="../Customer//RegisterCustomer/style.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
@@ -48,31 +55,37 @@ if (isset($_POST['submit'])) {
 
 <body>
     <div class="container my-5">
-        <form method="POST">
-            <div class="form-group">
-                <label class="form-label">Manager Name:</label>
-                <input type=" text" class="form-control" name="name" placeholder="your name" value="<?php echo $name?>">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Manager email:</label>
-                <input type="email" class="form-control" name="email" placeholder="your mobile"
-                    value="<?php echo $email?>">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Manager mobile:</label>
-                <input type="text" class="form-control" name="mobile" placeholder="your mobile"
-                    value="<?php echo $mobile?>">
-            </div>
-            <div class="form-group mb-3">
-                <label class="form-label">password:</label>
-                <input type="password" class="form-control" name="password" placeholder="your password"
-                    value="<?php echo $password?>">
-            </div>
+        <div class="form-container">
+            <form action="" method="post" enctype="multipart/form-data">
+                <h3 class="bg-success bg-opacity-20 p-3 w-60 mx-auto">Create Account here</h3>
+                <div class="" id="m-display">
+                    <?php
+                    if (isset($_POST['create'])) {
+                        require_once "message.php";
+                    }
+                    // session_abort();
+                    ?>
+                </div>
+                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Name:</label>
+                <input type="text" name="name" class="box" placeholder="Name of person" value="<?php echo $nameS ?>"
+                    required>
+                <label class="form-label text-start fs-4  w-100 bg-opacity-10 mx-2">Phone number</label>
+                <input type="text" name="mobile" class="box" placeholder="phone of person"
+                    value="<?php echo $mobileS ?>" required>
+                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Email</label>
+                <input type="email" name="email" class="box" placeholder="Count number of customer" value="
+                    <?php echo $emailS ?>" required>
 
+                <label class=" form-label text-start fs-4 w-100 bg-opacity-10 mx-2">password</label>
+                <input type="text" class="box" name="password" placeholder="password of customer"
+                    value=" <?php echo $passwordS ?>" required>
+                <label class="form-label text-start fs-4 w-100 bg-opacity-10 mx-2">Type</label>
+                <input type="text" name="type" class="box" placeholder="customer type" value="<?php echo $type ?>"
+                    equired>
+                <input type="submit" name="create" class="btn btn-primary w-50 mx-auto" value="update">
 
-            <button type="submit" class="btn btn-primary" name="submit">update</button>
-        </form>
-    </div>
+            </form>
+        </div>
 
 </body>
 
